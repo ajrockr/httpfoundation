@@ -1,0 +1,26 @@
+{
+    "name": "ajrockr/httpfoundation",
+    "description": "A basic set of HTTP tools.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ajrockr\\Httpfoundation\\": "src/",
+            "Ajrockr\\Httpfoundation\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ajrockr",
+            "email": "anjorizz@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^11.2",
+        "symfony/var-dumper": "^7.1"
+    },
+    "require": {
+        "nikic/fast-route": "^1.3",
+        "php-di/php-di": "^7.0"
+    }
+}

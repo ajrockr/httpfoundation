@@ -4,12 +4,13 @@ namespace Ajrockr\Httpfoundation\Tests\Router\TestControllers;
 
 use Ajrockr\Httpfoundation\Controller\BaseController;
 use Ajrockr\Httpfoundation\Http\Response;
+use Ajrockr\Httpfoundation\Routing\Route;
 
 class TestController extends BaseController
 {
-    public function hello()
+    #[Route(method: 'GET', path: '/hello')]
+    public function hello(): Response
     {
-        $response = new Response('Hello, World!');
-        $response->send();
+        return $this->response('Hello, World!');
     }
 }

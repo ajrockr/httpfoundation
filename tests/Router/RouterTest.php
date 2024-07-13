@@ -9,16 +9,15 @@ use PHPUnit\Framework\TestCase;
 
 class RouterTest extends TestCase
 {
-
+    /**
+     * @throws \ReflectionException
+     */
     public function testRouting()
     {
         $router = new Router([TestController::class]);
         $request = new Request('GET', '/hello');
 
-        ob_start();
+        $this->expectOutputString('Hello, World!');
         $router->dispatch($request->getMethod(), $request->getUri());
-        $output = ob_end_clean();
-
-        $this->assertEquals('Hello, World!', $output);
     }
 }

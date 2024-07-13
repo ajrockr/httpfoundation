@@ -12,9 +12,8 @@ class BaseController
         UrlHelper::redirect($url, $statusCode);
     }
 
-    public function response(string $content, int $status = 200): void
+    public function response(string $content, int $status = 200): Response
     {
-        $response = new Response($content, $status);
-        $response->send();
+        return new Response($content, $status);
     }
 }
