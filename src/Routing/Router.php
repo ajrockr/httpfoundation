@@ -41,7 +41,7 @@ class Router
     private function addRoutesFromController(string $controller): void
     {
         try {
-            $reflectionClass = new ReflectionClass($controller);
+            $reflectionClass = new ReflectionClass($controller); // this is failing to call my Tests/Router/TestControllers/TestController
 
             foreach ($reflectionClass->getMethods() as $method) {
                 $attributes = $reflectionClass->getAttributes(Route::class);
