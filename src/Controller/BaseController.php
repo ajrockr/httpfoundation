@@ -1,9 +1,9 @@
 <?php
 
-namespace Ajrockr\Httpfoundation\Controller;
+namespace Ajrockr\HttpFoundation\Controller;
 
-use Ajrockr\Httpfoundation\Http\Response;
-use Ajrockr\Httpfoundation\Http\UrlHelper;
+use Ajrockr\HttpFoundation\Http\Response;
+use Ajrockr\HttpFoundation\Http\UrlHelper;
 
 class BaseController
 {

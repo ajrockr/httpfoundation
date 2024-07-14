@@ -1,6 +1,6 @@
 <?php
 
-namespace Ajrockr\Httpfoundation\Http;
+namespace Ajrockr\HttpFoundation\Http;
 
 class UrlHelper
 {

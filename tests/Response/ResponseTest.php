@@ -1,8 +1,8 @@
 <?php
 
-namespace Ajrockr\Httpfoundation\Tests\Response;
+namespace Tests\Response;
 
-use Ajrockr\Httpfoundation\Http\Response;
+use Ajrockr\HttpFoundation\Http\Response;
 use PHPUnit\Framework\TestCase;
 
 class ResponseTest extends TestCase

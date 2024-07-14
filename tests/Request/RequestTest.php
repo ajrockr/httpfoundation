@@ -1,8 +1,8 @@
 <?php
 
-namespace Ajrockr\Httpfoundation\Tests\Request;
+namespace Tests\Request;
 
-use Ajrockr\Httpfoundation\Http\Request;
+use Ajrockr\HttpFoundation\Http\Request;
 use PHPUnit\Framework\TestCase;
 
 class RequestTest extends TestCase

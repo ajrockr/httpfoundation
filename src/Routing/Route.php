@@ -1,12 +1,18 @@
 <?php
 
-namespace Ajrockr\Httpfoundation\Routing;
+namespace Ajrockr\HttpFoundation\Routing;
 
-#[\Attribute(\Attribute::TARGET_METHOD)]
+use Attribute;
+
+#[Attribute(Attribute::TARGET_METHOD)]
 class Route
 {
-    public function __construct(
-        public string $method,
-        public string $path
-    ) {}
+    public string $method;
+    public string $path;
+
+    public function __construct(string $method, string $path)
+    {
+        $this->method = $method;
+        $this->path = $path;
+    }
 }

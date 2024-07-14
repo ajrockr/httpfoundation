@@ -1,11 +1,11 @@
 <?php
 
-namespace Ajrockr\Httpfoundation\Tests\Router;
+namespace Tests\Router;
 
-use Ajrockr\Httpfoundation\Http\Request;
-use Ajrockr\Httpfoundation\Routing\Router;
-use Ajrockr\Httpfoundation\Tests\Router\TestControllers\TestController;
+use Ajrockr\HttpFoundation\Http\Request;
+use Ajrockr\HttpFoundation\Routing\Router;
 use PHPUnit\Framework\TestCase;
+use Tests\Controller\TestController;
 
 class RouterTest extends TestCase
 {

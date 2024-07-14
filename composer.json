@@ -5,8 +5,12 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Ajrockr\\Httpfoundation\\": "src/",
-            "Ajrockr\\Httpfoundation\\Tests\\": "tests/"
+            "Ajrockr\\HttpFoundation\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     },
     "authors": [

@@ -1,8 +1,8 @@
 <?php
 
-namespace Ajrockr\Httpfoundation\Routing;
+namespace Ajrockr\HttpFoundation\Routing;
 
-use Ajrockr\Httpfoundation\Http\Response;
+use Ajrockr\HttpFoundation\Http\Response;
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
 use ReflectionClass;
@@ -21,12 +21,14 @@ class Router
     public function __construct(array $controllers)
     {
         foreach ($controllers as $controller) {
-            $this->addRoutesFromController($controller);
+            if (class_exists($controller)) {
+                $this->addRoutesFromController($controller);
+            }
         }
 
-        foreach ($this->routes as $route) {
-            echo "Registered Route: Method - {$route['method']}, Path - {$route['path']}, Handler - " . implode('::', $route['handler']) . PHP_EOL;
-        }
+//        foreach ($this->routes as $route) {
+//            echo "Registered Route: Method - {$route['method']}, Path - {$route['path']}, Handler - " . implode('::', $route['handler']) . PHP_EOL;
+//        }
 
         $this->dispatcher = simpleDispatcher(function(RouteCollector $r) {
             foreach ($this->routes as $route) {
@@ -35,16 +37,14 @@ class Router
         });
     }
 
-    /**
-     * @throws ReflectionException
-     */
     private function addRoutesFromController(string $controller): void
     {
         try {
-            $reflectionClass = new ReflectionClass($controller); // this is failing to call my Tests/Router/TestControllers/TestController
+            $reflectionClass = new ReflectionClass($controller);
 
             foreach ($reflectionClass->getMethods() as $method) {
-                $attributes = $reflectionClass->getAttributes(Route::class);
+                $attributes = $method->getAttributes(Route::class);
+
                 foreach ($attributes as $attribute) {
                     // var Route $route
                     $route = $attribute->newInstance();
@@ -56,13 +56,16 @@ class Router
                 }
             }
         } catch (ReflectionException $e) {
-            throw new ReflectionException($e->getMessage());
+
         }
     }
 
     public function dispatch(string $httpMethod, string $uri): void
     {
         $routeInfo = $this->dispatcher->dispatch($httpMethod, $uri);
+
+        // Debug the routeInfo
+        //echo "Dispatch Result: " . print_r($routeInfo, true) . PHP_EOL;
 
         ob_start();
 
@@ -82,7 +85,7 @@ class Router
         }
     }
 
-    private function handleFound(string $handler, array $vars): Response
+    private function handleFound(array $handler, array $vars): Response
     {
 //        [$class, $method] = explode('::', $handler);
         [$class, $method] = $handler;

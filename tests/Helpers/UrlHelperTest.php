@@ -1,8 +1,8 @@
 <?php
 
-namespace Ajrockr\Httpfoundation\Tests\Helpers;
+namespace Tests\Helpers;
 
-use Ajrockr\Httpfoundation\Http\UrlHelper;
+use Ajrockr\HttpFoundation\Http\UrlHelper;
 use PHPUnit\Framework\TestCase;
 
 class UrlHelperTest extends TestCase
